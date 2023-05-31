@@ -4,40 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>여행 계획서 작성</title>
-    <style>
-  /* 라벨 스타일 */
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-
-  /* input 스타일 */
-  input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 200px;
-  }
-</style>
+    <title>여행 일정 생성기</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
   </head>
   <body>
-    <div>
+    <div class="window" style="width: 220px">
+  <div class="title-bar">
+    <div class="title-bar-text">여행 일정 생성기</div>
+  </div>
+  <div class="window-body">
       <ul></ul>
       <form action="post">
-        <div>
+        <div class="field-row-stacked" style="width: 200px">
           <label for="input1">어디로 여행하시나요?</label>
           <input type="text" id="input1" name="input1" placeholder="예) 서울" autofocus />
         </div>
-        <div>
+        <div class="field-row-stacked" style="width: 200px">
           <label for="input2">여행 일정을 입력해 주세요.</label>
           <input type="text" id="input2" name="input2" placeholder="예) 3" />
         </div>
+        <br>
         <button type="submit">일정 생성!</button>
       </form>
-    </div>
+      </div>
+      <div id="answerText"></div>
+      </div>
+  </div>
     <script>
       const $form = document.querySelector("form");
       const input1 = document.querySelector('input[name="input1"]');
@@ -90,28 +82,10 @@
         }
       };
 
-      // 화면에 질문 그려주는 함수
-      const printQuestion = async () => {
-        if (questionData.length > 0) {
-          const li = document.createElement("li");
-          li.classList.add("question");
-          questionData.forEach((el) => {
-            const question = document.createElement("span");
-            question.innerText = el.content;
-            li.appendChild(question);
-          });
-          $chatList.appendChild(li);
-          questionData = [];
-          question = false;
-        }
-      };
-
       // 화면에 답변 그려주는 함수
       const printAnswer = (answer) => {
-        const li = document.createElement("li");
-        li.classList.add("answer");
-        li.innerText = answer;
-        $chatList.appendChild(li);
+        const answerText = document.getElementById("answerText");
+        answerText.innerText = answer;
       };
 
       // api 요청보내는 함수
