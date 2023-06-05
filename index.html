@@ -5,43 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>여행 일정 생성기</title>
-    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
     <style>
+      /* 데스크탑 화면 가로 길이 */
       @media screen and (min-width: 769px) {
         .window {
           width: 220px;
         }
       }
+
+      /* 로딩 창 */
+      .loader {
+        display: none;
+        border: 8px solid #ffffff;
+        border-top: 8px solid #03198f;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 2s linear infinite;
+        margin: 20px auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+       /* 복사 버튼 */
+       #copyButton {
+        display: none;
+        margin: 12px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
     <div class="window" style="width: device-width">
-  <div class="title-bar">
-    <div class="title-bar-text">여행 일정 생성기</div>
-  </div>
-  <div class="window-body">
-      <ul></ul>
-      <form action="post">
-        <div class="field-row-stacked" style="width: 98%;">
-          <label for="input1">어디로 여행하시나요?</label>
-          <input type="text" id="input1" name="input1" placeholder="예) 서울" autofocus />
-        </div>
-        <div class="field-row-stacked" style="width: 98%;">
-          <label for="input2">여행 일정을 입력해 주세요.</label>
-          <input type="text" id="input2" name="input2" placeholder="예) 3" />
-        </div>
-        <br>
-        <button type="submit">일정 생성!</button>
-      </form>
+      <div class="title-bar">
+        <div class="title-bar-text">여행 일정 생성기</div>
       </div>
+      <div class="window-body">
+        <ul></ul>
+        <form action="post">
+          <div class="field-row-stacked" style="width: 98%;">
+            <label for="input1">어디로 여행하시나요?</label>
+            <input
+              type="text"
+              id="input1"
+              name="input1"
+              placeholder="예) 서울"
+              autofocus
+            />
+          </div>
+          <div class="field-row-stacked" style="width: 98%;">
+            <label for="input2">여행 일정을 입력해 주세요.</label>
+            <input type="text" id="input2" name="input2" placeholder="예) 3" />
+          </div>
+          <br />
+          <button type="submit">일정 생성!</button>
+        </form>
+      </div>
+      <!-- 로딩 창 -->
+      <div class="loader" id="loader"></div>
+      <!-- 답변 표시 -->
       <div id="answerText"></div>
-      </div>
-  </div>
+      <!-- 클립보드 복사 버튼 -->
+      <button id="copyButton">복사하기</button>
+    </div>
+
     <script>
       const $form = document.querySelector("form");
       const input1 = document.querySelector('input[name="input1"]');
       const input2 = document.querySelector('input[name="input2"]');
       const $chatList = document.querySelector("ul");
+      const $loader = document.getElementById("loader");
+      const $answerText = document.getElementById("answerText");
+      const $copyButton = document.getElementById("copyButton");
 
       // openAI API
       let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
@@ -91,12 +134,22 @@
 
       // 화면에 답변 그려주는 함수
       const printAnswer = (answer) => {
-        const answerText = document.getElementById("answerText");
-        answerText.innerText = answer;
+        $answerText.innerText = answer;
+        $copyButton.style.display = "block"; // 복사 버튼 표시
+        $loader.style.display = "none"; // 로딩 창 숨기기
+      };
+
+      // 클립보드에 답변 복사
+      const copyAnswer = () => {
+        const answer = $answerText.innerText;
+        navigator.clipboard.writeText(answer);
+        alert("일정이 클립보드에 복사되었습니다!");
       };
 
       // api 요청보내는 함수
       const apiPost = async () => {
+        $loader.style.display = "block"; // 로딩 창 표시
+
         const result = await fetch(url, {
           method: "POST",
           headers: {
@@ -127,6 +180,9 @@
       // "전송" 버튼 클릭 시 질문 전송을 위해 sendQuestion() 함수 호출
       const submitButton = document.querySelector('button[type="submit"]');
       submitButton.addEventListener("click", sendQuestion);
+
+      // 클립보드 복사 버튼 클릭 시 답변 복사를 위해 copyAnswer() 함수 호출
+      $copyButton.addEventListener("click", copyAnswer);
     </script>
   </body>
 </html>
