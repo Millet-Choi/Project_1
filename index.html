@@ -7,14 +7,34 @@
     <title>여행 일정 생성기</title>
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
     <style>
+      /* 가로 길이 */
+
+      .window {
+        width: device-width;
+      }
+
+      /* 질문 입력 가로 길이 */
+
+      .field-row-stacked {
+        width: 98%;
+      }
+
       /* 데스크탑 화면 가로 길이 */
+
       @media screen and (min-width: 769px) {
         .window {
           width: 220px;
         }
       }
 
+      /* 일정 생성 버튼 */
+
+      .field-row{
+        justify-content: flex-end
+      }
+
       /* 로딩 창 */
+
       .loader {
         display: none;
         border: 8px solid #ffffff;
@@ -36,45 +56,50 @@
       }
 
        /* 복사 버튼 */
-       #copyButton {
+      
+      #copyButton {
         display: none;
-        margin: 12px;
-        text-align: center;
       }
     </style>
   </head>
   <body>
-    <div class="window" style="width: device-width">
+    <div class="window">
       <div class="title-bar">
         <div class="title-bar-text">여행 일정 생성기</div>
       </div>
       <div class="window-body">
         <ul></ul>
         <form action="post">
-          <div class="field-row-stacked" style="width: 98%;">
             <label for="input1">어디로 여행하시나요?</label>
             <input
+              class="field-row-stacked"
               type="text"
               id="input1"
               name="input1"
               placeholder="예) 서울"
               autofocus
             />
-          </div>
-          <div class="field-row-stacked" style="width: 98%;">
             <label for="input2">여행 일정을 입력해 주세요.</label>
-            <input type="text" id="input2" name="input2" placeholder="예) 3" />
-          </div>
-          <br />
-          <button type="submit">일정 생성!</button>
+            <input 
+              class="field-row-stacked"
+              type="text"
+              id="input2"
+              name="input2"
+              placeholder="예) 3" />
+          <section class="field-row">
+          <button id="submitButton" type="submit">일정 생성!</button>
+          </section>
         </form>
       </div>
+
       <!-- 로딩 창 -->
       <div class="loader" id="loader"></div>
       <!-- 답변 표시 -->
       <div id="answerText"></div>
       <!-- 클립보드 복사 버튼 -->
+      <section class="field-row">
       <button id="copyButton">복사하기</button>
+      </section>
     </div>
 
     <script>
@@ -135,8 +160,8 @@
       // 화면에 답변 그려주는 함수
       const printAnswer = (answer) => {
         $answerText.innerText = answer;
-        $copyButton.style.display = "block"; // 복사 버튼 표시
-        $loader.style.display = "none"; // 로딩 창 숨기기
+        $copyButton.style.display = "block";    // 복사 버튼 표시
+        $loader.style.display = "none";         // 로딩 창 숨기기
       };
 
       // 클립보드에 답변 복사
