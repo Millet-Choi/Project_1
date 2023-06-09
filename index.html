@@ -5,62 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>여행 일정 생성기</title>
-    <link rel="stylesheet" href="https://unpkg.com/98.css" />
-    <style>
-      /* 가로 길이 */
-
-      .window {
-        width: device-width;
-      }
-
-      /* 질문 입력 가로 길이 */
-
-      .field-row-stacked {
-        width: 98%;
-      }
-
-      /* 데스크탑 화면 가로 길이 */
-
-      @media screen and (min-width: 769px) {
-        .window {
-          width: 220px;
-        }
-      }
-
-      /* 일정 생성 버튼 */
-
-      .field-row{
-        justify-content: flex-end
-      }
-
-      /* 로딩 창 */
-
-      .loader {
-        display: none;
-        border: 8px solid #ffffff;
-        border-top: 8px solid #03198f;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 2s linear infinite;
-        margin: 20px auto;
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-       /* 복사 버튼 */
-      
-      #copyButton {
-        display: none;
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css" />
     <script>
       // 클립보드에 복사하는 함수
       const copyToClipboard = (text) => {
