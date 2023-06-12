@@ -35,3 +35,7 @@ Windows 98 스타일의 ChatGPT 연동 여행 일정 생성 사이트
 ![Mobile Answer](https://github.com/Millet-Choi/Project_1/assets/131703836/005becb3-c26e-47aa-9e9d-de6f455cfbcb "Mobile Answer")
 
 ![Mobile Copy](https://github.com/Millet-Choi/Project_1/assets/131703836/f288d899-53cc-473a-b021-a4211537551d "Mobile Copy")
+
+
+## STACKS
+![HTML](https://img.shields.io/badge/html-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/css-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
