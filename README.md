@@ -11,6 +11,7 @@ Windows 98 스타일의 ChatGPT 연동 여행 일정 생성 사이트
 
 
 ### 실행 이미지
+---
 
 
 #### Desktop
