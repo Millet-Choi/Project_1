@@ -14,7 +14,7 @@ Windows 98 스타일의 ChatGPT 연동 여행 일정 생성 사이트
 
 #### Desktop
 <figure class="half">
-    <img src=![Desktop 1](https://github.com/Millet-Choi/Project_1/assets/131703836/b9ce3f50-25b7-4f6b-a025-dd4e0f61da62)>
-    <img src=![Desktop 2](https://github.com/Millet-Choi/Project_1/assets/131703836/a254c112-09a5-4186-b3c8-582f4fd80bf9)>
+    <img src="https://github.com/Millet-Choi/Project_1/assets/131703836/b9ce3f50-25b7-4f6b-a025-dd4e0f61da62">
+    <img src="https://github.com/Millet-Choi/Project_1/assets/131703836/a254c112-09a5-4186-b3c8-582f4fd80bf9">
 figure>
 
