@@ -1,17 +1,13 @@
-/* 98 CSS */
 @import url('https://unpkg.com/98.css');
 
-/* 가로 길이 */
 .window {
     width: device-width;
   }
   
-  /* 질문 입력 가로 길이 */
   .field-row-stacked {
     width: 98%;
   }
   
-  /* 데스크탑 화면 가로 길이 */
   @media screen and (min-width: 769px) {
     .window {
       width: 220px;
@@ -44,7 +40,6 @@
     }
   }
   
-  /* 복사 버튼 */
   #copyButton {
     display: none;
   }
